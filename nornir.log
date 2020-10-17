@@ -1,0 +1,293 @@
+2020-10-12 23:22:27,135 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:22:27,181 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'http_method' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 978, in _validate_conn
+    conn.connect()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connection.py", line 362, in connect
+    self.sock = ssl_wrap_socket(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/util/ssl_.py", line 397, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/ssl.py", line 1040, in _create
+    self.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/ssl.py", line 1309, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1122)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='172.16.100.142', port=443): Max retries exceeded with url: /restconf/data/native/policy (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1122)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/plugins/tasks/apis/http_method.py", line 36, in http_method
+    r = requests.request(method, url, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/adapters.py", line 514, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='172.16.100.142', port=443): Max retries exceeded with url: /restconf/data/native/policy (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1122)')))
+
+2020-10-12 23:22:27,182 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 127, in pullyang
+    send = task.run(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function http_method at 0x7fb466c03430> (failed)
+
+
+2020-10-12 23:25:10,507 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:25:10,620 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'http_method' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/plugins/tasks/apis/http_method.py", line 39, in http_method
+    r.raise_for_status()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 941, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://172.16.100.142:443/restconf/data/native/policy
+
+2020-10-12 23:25:10,620 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 127, in pullyang
+    send = task.run(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function http_method at 0x7fe93ba05430> (failed)
+
+
+2020-10-12 23:28:51,132 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:28:51,310 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'http_method' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/plugins/tasks/apis/http_method.py", line 39, in http_method
+    r.raise_for_status()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 941, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://172.16.100.142:443/restconf/data/native/policy
+
+2020-10-12 23:28:51,310 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 127, in pullyang
+    send = task.run(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function http_method at 0x7fabb9b03430> (failed)
+
+
+2020-10-12 23:32:10,537 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:32:10,610 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'http_method' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/plugins/tasks/apis/http_method.py", line 39, in http_method
+    r.raise_for_status()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 941, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://172.16.100.142:443/restconf/data/native/interface
+
+2020-10-12 23:32:10,611 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 127, in pullyang
+    send = task.run(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function http_method at 0x7fe0c8200430> (failed)
+
+
+2020-10-12 23:43:32,366 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:43:32,497 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-12 23:45:22,792 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:45:35,943 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:47:07,088 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:47:29,757 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:47:29,854 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-12 23:47:42,412 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:47:59,167 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:47:59,251 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-12 23:48:16,316 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:48:46,412 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:57:53,510 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-12 23:58:23,414 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:08:18,795 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:08:52,853 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:09:49,964 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:10:14,749 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:16:15,304 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 00:16:15,469 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-13 11:12:36,103 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:12:59,915 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:13:00,340 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-13 11:13:16,769 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:13:17,555 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-13 11:13:39,439 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:13:39,858 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-13 11:13:54,027 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:36:37,618 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 11:37:00,277 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:04:11,231 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:04:45,358 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:05:14,484 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:09:32,591 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:11:51,123 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:11:52,555 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 142, in pullyang
+    print(f"          {interface['ip']['address']['primary']['address']}")
+KeyError: 'ip'
+
+2020-10-13 14:12:31,733 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:14:32,321 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-13 14:17:43,564 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 14:26:48,187 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:31:32,749 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:31:34,219 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 143, in pullyang
+    print(f"          Ip address: {interface['ip']['address']['primary']['address']}")
+KeyError: 'address'
+
+2020-10-14 18:33:07,090 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:33:20,739 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:56:24,590 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:56:53,810 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-14 18:59:40,745 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-17 14:16:03,773 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts

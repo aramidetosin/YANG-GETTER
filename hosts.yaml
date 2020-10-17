@@ -1,0 +1,4 @@
+R1:
+  hostname: sandbox-iosxe-latest-1.cisco.com
+  groups:
+    - cisco_group
