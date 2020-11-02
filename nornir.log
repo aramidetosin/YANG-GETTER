@@ -291,3 +291,88 @@ KeyError: 'address'
 2020-10-14 18:56:53,810 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
 2020-10-14 18:59:40,745 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
 2020-10-17 14:16:03,773 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-31 00:12:36,069 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-31 00:12:37,002 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 136, in pullyang
+    printer = send.response.json()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/models.py", line 898, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+2020-10-31 00:12:56,725 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-10-31 00:13:10,898 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-11-02 20:07:44,729 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts
+2020-11-02 20:09:00,084 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'http_method' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 978, in _validate_conn
+    conn.connect()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connection.py", line 309, in connect
+    conn = self._new_conn()
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7fe823c0e730>: Failed to establish a new connection: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='172.16.100.152', port=9443): Max retries exceeded with url: /restconf/data/native/router (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fe823c0e730>: Failed to establish a new connection: [Errno 60] Operation timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/plugins/tasks/apis/http_method.py", line 36, in http_method
+    r = requests.request(method, url, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='172.16.100.152', port=9443): Max retries exceeded with url: /restconf/data/native/router (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fe823c0e730>: Failed to establish a new connection: [Errno 60] Operation timed out'))
+
+2020-11-02 20:09:00,085 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pullyang' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/Users/aramide/Google Drive/YANG-GETTER/yang_getter.py", line 133, in pullyang
+    send = task.run(
+  File "/Users/aramide/Google Drive/YANG-GETTER/venv/lib/python3.9/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function http_method at 0x7fe823abb4c0> (failed)
+
+
+2020-11-02 20:10:13,314 -  nornir.core -     INFO -        run() - Running task 'pullyang' with args {} on 1 hosts

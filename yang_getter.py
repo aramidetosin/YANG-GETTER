@@ -49,6 +49,8 @@ table.add_row(
 )
 table.add_row("[cyan]memory[/cyan]")
 
+table.add_row("[cyan]vrf-definition[/cyan]")
+
 table.add_row("[cyan]service[/cyan]")
 
 table.add_row("[cyan]platform[/cyan]")
@@ -88,6 +90,8 @@ elif target in ("domain", "ssh", "access-list", "http", "vrf", "cef"):
 elif target in ("GigabitEthernet", "Loopback", "Port-channel"):
     prefix = "interface"
     target = f"{prefix}/{target}"
+elif target == "vrf-definition":
+    target = "vrf"
 elif target == "qos":
     target = "policy"
 elif target in ("class-map", "policy-map"):
@@ -123,7 +127,9 @@ headers = {
 }
 
 
+
 def pullyang(task):
+    yang_url = f"https://{task.host.hostname}:9443/restconf/data/native/{target}"
     send = task.run(
         http_method,
         severity_level=logging.DEBUG,
@@ -131,9 +137,10 @@ def pullyang(task):
         auth=("developer", "C1sco12345"),
         method="get",
         headers=headers,
-        url=f"https://{task.host.hostname}:443/restconf/data/native/{target}",
+        url=yang_url,
     )
     printer = send.response.json()
+    rprint(f"\nYANG URL: {yang_url}\n")
     rprint(printer)
     # # rprint(printer['Cisco-IOS-XE-native:interface']['GigabitEthernet'])
     #
